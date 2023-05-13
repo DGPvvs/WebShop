@@ -1,0 +1,49 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model ProductDto
+
+<form asp-controller="Product" asp-action="Add" method="post">
+	<div class="row">
+		<div class="col-6">
+			<label asp-for="Name"></label>
+			<input asp-for="Name" class="form-control"/>
+			<span asp-validation-for="Name" class="small text-danger"></span>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-6">
+			<label asp-for="Description"></label>
+			<input asp-for="Description" class="form-control"/>
+			<span asp-validation-for="Description" class="small text-danger"></span>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-6">
+			<label asp-for="Quontity"></label>
+			<input asp-for="Quontity" class="form-control"/>
+			<span asp-validation-for="Quontity" class="small text-danger"></span>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-6">
+			<label asp-for="Price"></label>
+			<input asp-for="Price" class="form-control"/>
+			<span asp-validation-for="Price" class="small text-danger"></span>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-1">
+		<button type="submit" class="btn btn-success mt-3">Submit</button>
+		</div>
+		</div>
+
+	
+</form>
+
+@section Scripts{
+	<partial name="_ValidationScriptsPartial"/>
+}
