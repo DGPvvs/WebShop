@@ -1,3 +1,6 @@
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using WebShop.Core.Data;
 namespace WebShop
 {
     using Microsoft.AspNetCore.Identity;
@@ -22,8 +25,18 @@ namespace WebShop
                     .UseLazyLoadingProxies());
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-            builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            //builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            //    .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            builder.Services.AddDefaultIdentity<IdentityUser>(options =>
+            {
+                options.Password.RequireNonAlphanumeric = true;
+                options.Password.RequiredLength = 6;
+                options.User.RequireUniqueEmail = true;
+                options.SignIn.RequireConfirmedAccount = true;
+            })
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+
             builder.Services.AddControllersWithViews();
 
             builder.Services.AddScoped<IRepository, Repository>();
